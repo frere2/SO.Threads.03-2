@@ -20,9 +20,7 @@ public class AeroportoThread extends Thread {
 
     @Override
     public void run() {
-        while (!hasDeparted) {
-            permissao_decolagem();
-        }
+        permissao_decolagem();
     }
 
     public void permissao_decolagem() {
@@ -57,7 +55,6 @@ public class AeroportoThread extends Thread {
         Thread.sleep(ThreadLocalRandom.current().nextInt(600, 801)); // decolagem
         System.out.println("Avião " + threadId + " começou a se afastar");
         Thread.sleep(ThreadLocalRandom.current().nextInt(300, 801)); // afastamento
-        hasDeparted = true;
 
         if (permissaoDecolagem) semaforoNorte.release();
         else if (permissaoDecolagemSul) semaforoSul.release();
